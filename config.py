@@ -103,11 +103,19 @@ BATCH_SIZE: int = 1
 # Lowering this value results in lower memory usage
 FILE_SPLITTING_DURATION: int = 600
 
+# Whether to use noise to pad the signal
+# If set to False, the signal will be padded with zeros
+USE_NOISE: bool = False
+
 # Specifies the output format. 'table' denotes a Raven selection table,
 # 'audacity' denotes a TXT file with the same format as Audacity timeline labels
 # 'csv' denotes a generic CSV file with start, end, species and confidence.
 RESULT_TYPE: str = "csv"
 OUTPUT_FILENAME: str = "BirdNET_SelectionTable.txt" # this is for combined Raven selection tables only
+
+# Whether to skip existing results in the output path
+# If set to False, existing files will not be overwritten
+SKIP_EXISTING_RESULTS: bool = False
 
 #####################
 # Training settings #
@@ -253,7 +261,9 @@ def getConfig():
         'SPECIES_LIST': SPECIES_LIST,
         'ERROR_LOG_FILE': ERROR_LOG_FILE,
         'FILE_LIST': FILE_LIST,
-        'FILE_STORAGE_PATH': FILE_STORAGE_PATH
+        'FILE_STORAGE_PATH': FILE_STORAGE_PATH,
+        'SKIP_EXISTING_RESULTS': SKIP_EXISTING_RESULTS,
+        'USE_NOISE': USE_NOISE
     }
 
 
@@ -316,6 +326,8 @@ def setConfig(c):
     global ERROR_LOG_FILE
     global FILE_LIST
     global FILE_STORAGE_PATH
+    global SKIP_EXISTING_RESULTS
+    global USE_NOISE
 
     RANDOM_SEED = c['RANDOM_SEED']
     MODEL_VERSION = c['MODEL_VERSION']
@@ -374,3 +386,5 @@ def setConfig(c):
     ERROR_LOG_FILE = c['ERROR_LOG_FILE']
     FILE_LIST = c['FILE_LIST']
     FILE_STORAGE_PATH = c['FILE_STORAGE_PATH']
+    SKIP_EXISTING_RESULTS = c['SKIP_EXISTING_RESULTS']
+    USE_NOISE = c['USE_NOISE']
