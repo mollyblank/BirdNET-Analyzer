@@ -73,7 +73,7 @@ SPECIES_LIST_FILE: str = "example/species_list.txt"
 
 # File input path and output path for selection tables
 INPUT_PATH: str = "example/"
-OUTPUT_PATH: str = "example/"
+OUTPUT_PATH: str = "example/Amazonas/"
 
 # Supported file types
 ALLOWED_FILETYPES: list[str] = ["wav", "flac", "mp3", "ogg", "m4a", "wma", "aiff", "aif"]
@@ -106,7 +106,7 @@ FILE_SPLITTING_DURATION: int = 600
 # Specifies the output format. 'table' denotes a Raven selection table,
 # 'audacity' denotes a TXT file with the same format as Audacity timeline labels
 # 'csv' denotes a generic CSV file with start, end, species and confidence.
-RESULT_TYPE: str = "table"
+RESULT_TYPE: str = "csv"
 OUTPUT_FILENAME: str = "BirdNET_SelectionTable.txt" # this is for combined Raven selection tables only
 
 #####################
